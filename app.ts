@@ -1,7 +1,7 @@
 // Implicit data types. Cannot reassign to a different data type.
 //string
 let myName = 'Chase';
-// myName = 29;
+// myName = 29
 
 //number
 // let myAge = 25.5;
@@ -74,3 +74,49 @@ let userData: { name: string, age: number } = {
 //     a: "Hello",
 //     b: 22
 // };
+
+//complex object
+let complex: {data: number[], output: (all: boolean) => number[]} = {
+    data: [100, 3.99, 10],
+
+    output: function (all: boolean): number[] {
+        return this.data;
+    }
+};
+// complex = {};
+
+//type alias
+type Complex = {data: number[], output: (all: boolean) => number[]};
+
+let complex2: Complex  = {
+    data: [100, 3.99, 10],
+
+    output: function (all: boolean): number[] {
+        return this.data;
+    }
+};
+
+//union types - can be number or string but not boolean. Use single pipe.
+let myRealRealAge: number | string = 27;
+myRealRealAge = 25;
+// myRealRealAge = true;
+
+//check types - when you check the typeof, you put the data type in quotes like "number", "string", "boolean", etc.
+let finalValue = 123;
+if (typeof finalValue == "number") {
+    console.log("Final value is a number");
+}
+
+//never - may use in parts of code where it should never be reached.
+function neverReturns():never {
+    throw new Error('An error!');
+}
+
+//Nullable Types - if you initialize a variable with type null it is not assumed to be type: any;
+let canBeNull: number | null = 12;
+canBeNull = null;
+let canAlsoBeNull;
+canAlsoBeNull = null;
+let canThisBeAny = null;
+// canThisBeAny = 12;
+
