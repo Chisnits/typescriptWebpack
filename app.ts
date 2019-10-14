@@ -48,75 +48,124 @@ let myName = 'Chase';
 
 //void
 //there is nothing to be returned.
-function sayHello(): void {
-    console.log("Hello!");
-}
+// function sayHello(): void {
+//     console.log("Hello!");
+// }
 
 // argument types
-function multiply(value1: number, value2: number): number {
-    return value1 * value2;
-}
+// function multiply(value1: number, value2: number): number {
+//     return value1 * value2;
+// }
 // console.log(multiply(2, 3));
 
 //function types
-let myMultiply: (a: number, b: number) => number;
+// let myMultiply: (a: number, b: number) => number;
 // myMultiply = sayHello;
 // myMultiply();
-myMultiply = multiply;
-console.log(myMultiply(5,2));
+// myMultiply = multiply;
+// console.log(myMultiply(5,2));
 
 //objects
-let userData: { name: string, age: number } = {
-    name: 'Chase',
-    age: 25
-};
+// let userData: { name: string, age: number } = {
+//     name: 'Chase',
+//     age: 25
+// };
 // userData = {
 //     a: "Hello",
 //     b: 22
 // };
 
 //complex object
-let complex: {data: number[], output: (all: boolean) => number[]} = {
-    data: [100, 3.99, 10],
+// let complex: {data: number[], output: (all: boolean) => number[]} = {
+//     data: [100, 3.99, 10],
 
-    output: function (all: boolean): number[] {
-        return this.data;
-    }
-};
+//     output: function (all: boolean): number[] {
+//         return this.data;
+//     }
+// };
 // complex = {};
 
 //type alias
-type Complex = {data: number[], output: (all: boolean) => number[]};
+// type Complex = {data: number[], output: (all: boolean) => number[]};
 
-let complex2: Complex  = {
-    data: [100, 3.99, 10],
+// let complex2: Complex  = {
+//     data: [100, 3.99, 10],
 
-    output: function (all: boolean): number[] {
-        return this.data;
-    }
-};
+//     output: function (all: boolean): number[] {
+//         return this.data;
+//     }
+// };
 
 //union types - can be number or string but not boolean. Use single pipe.
-let myRealRealAge: number | string = 27;
-myRealRealAge = 25;
+// let myRealRealAge: number | string = 27;
+// myRealRealAge = 25;
 // myRealRealAge = true;
 
 //check types - when you check the typeof, you put the data type in quotes like "number", "string", "boolean", etc.
-let finalValue = 123;
-if (typeof finalValue == "number") {
-    console.log("Final value is a number");
-}
+// let finalValue = 123;
+// if (typeof finalValue == "number") {
+//     console.log("Final value is a number");
+// }
 
 //never - may use in parts of code where it should never be reached.
-function neverReturns():never {
-    throw new Error('An error!');
-}
+// function neverReturns():never {
+//     throw new Error('An error!');
+// }
 
 //Nullable Types - if you initialize a variable with type null it is not assumed to be type: any;
-let canBeNull: number | null = 12;
-canBeNull = null;
-let canAlsoBeNull;
-canAlsoBeNull = null;
-let canThisBeAny = null;
+// let canBeNull: number | null = 12;
+// canBeNull = null;
+// let canAlsoBeNull;
+// canAlsoBeNull = null;
+// let canThisBeAny = null;
 // canThisBeAny = 12;
 
+
+//SECTION 4
+//let & const
+// console.log("LET & COSNT");
+// let  variable = "Test";
+// console.log(variable);
+// variable = "Another Value";
+// console.log(variable);
+
+// const maxLevels = 100;
+// console.log(maxLevels);
+// maxLevels = 99; // Won't work
+
+//Block scope
+// function reset() {
+//     let variable = null;
+//     console.log(variable);
+// }
+// reset();
+// console.log(variable);
+
+//Arrow Functions
+// console.log("ARROW FUNCTIONS");
+// const addNumbers = function(number1: number, number2: number): number {
+//     return number1 + number2;
+// }
+// console.log(addNumbers(10, 3));
+
+// const multiplyNumbers = (number1: number, number2: number): number => number1 * number2;
+// console.log(multiplyNumbers(10, 3));
+
+// const greet = () => {
+//     console.log("Hello!");
+// }
+// greet();
+
+// const greetFriend = friend => console.log(friend);
+// greetFriend("Chase");
+
+//Default Parameters
+console.log("Default Parameters");
+const countdown = (start: number = 10): void => {
+    while(start > 0) {
+        start--;
+    }
+    console.log("Done!", start);
+}
+
+countdown(20);
