@@ -1,6 +1,6 @@
 // Implicit data types. Cannot reassign to a different data type.
 //string
-let myName = 'Chase';
+// let myName = 'Chase';
 // myName = 29
 
 //number
@@ -160,12 +160,45 @@ let myName = 'Chase';
 // greetFriend("Chase");
 
 //Default Parameters
-console.log("Default Parameters");
-const countdown = (start: number = 10): void => {
-    while(start > 0) {
-        start--;
-    }
-    console.log("Done!", start);
-}
+// console.log("Default Parameters");
+// const countdown = (start: number = 10): void => {
+//     while(start > 0) {
+//         start--;
+//     }
+//     console.log("Done!", start);
+// }
 
-countdown(20);
+// countdown();
+
+//Rest & Spread
+// console.log("REST");
+// const numbers = [1, 10, 99, -5];
+// console.log(Math.max(...numbers));
+
+// function makeArray(name: string, ...args: number[]) {
+//     console.log(args);
+//     return args;
+// }
+
+// console.log(makeArray("Chase", 1, 10, 20, 30));
+
+//Destructuring
+// console.log("DESTRUCTURING");
+// const myHobbies = ["Cooking", "Sports"];
+// const [hobby1, hobby2] = myHobbies;
+// console.log(hobby1, hobby2);
+
+// const userData = {
+//     userName: "Chase",
+//     age: 25
+// }
+// const {userName: myName, age: myAge} = userData;
+// console.log(myName, myAge);
+
+//Template Literals
+const myName = "Chase";
+const greeting = `This is a heading!
+Hello, I'm ${myName}
+This is cool!
+`;
+console.log(greeting);

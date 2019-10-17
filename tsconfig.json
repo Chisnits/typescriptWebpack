@@ -6,7 +6,7 @@
     "strictNullChecks": true, //n strict null checking mode, the null and undefined values are not in the domain of every type and are only assignable to themselves and any (the one exception being that undefined is also assignable to void).
     "noImplicitAny": false, // aise error on expressions and declarations with an implied any type.
     "noEmitOnError": true, // Do not emit outputs if any errors were reported.
-    "noUnusedParameters": true // Report errors on unused parameters.
+    "noUnusedParameters": false // Report errors on unused parameters.
   },
   "exclude": [
     "node_modules"
