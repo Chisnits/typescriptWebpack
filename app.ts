@@ -160,12 +160,86 @@ let myName = 'Chase';
 // greetFriend("Chase");
 
 //Default Parameters
-console.log("Default Parameters");
-const countdown = (start: number = 10): void => {
-    while(start > 0) {
-        start--;
+// console.log("Default Parameters");
+// const countdown = (start: number = 10): void => {
+//     while(start > 0) {
+//         start--;
+//     }
+//     console.log("Done!", start);
+// }
+
+// countdown(20);
+
+//private properties are only available within the object it is declared.
+//protected properties are also accessible from any objects/classes that inherit
+class Person {
+    private type: string;
+    //initialize properties right when declaring them.
+    protected age: number = 25;
+    
+    //shorthand initialization of variables in the constructor by using public/private/protected
+    constructor(public name: string, public username: string) {
     }
-    console.log("Done!", start);
+
+    printAge() {
+    //how you can access private properties from outside your class.
+        console.log(this.age);
+        this.setType("Old Guy")
+    }
+    //how you create methods which you can access from outside.
+    setType(type:string) {
+        this.type = type;
+        console.log(this.type);
+    }
 }
 
-countdown(20);
+const person = new Person('Chase', 'Chisnits');
+console.log(person);
+person.printAge();
+// person.setType("Cool Guy"); //won't work with private method.
+
+//Inheritance
+class Chase extends Person {
+    //when extending a class you have to call super() first. 
+    //Which calls the constructor of the parent class
+    constructor(username: string) {
+        super("Chase", username);
+        this.age = 31;
+    }
+}
+
+const chase = new Chase("charles");
+console.log(chase);
+
+//Getters & Setters
+class Plant {
+    private _species: string = "Default";
+
+
+    get species() {
+        return this._species;
+    }
+
+    set species(value: string) {
+        if(value.length > 3) {
+            this._species = value;
+        } else {
+            this._species = "Default";
+        }
+    }
+}
+
+let plant = new Plant();
+console.log(plant.species);
+plant.species = "Green Plant";
+console.log(plant.species);
+
+//Static Properties & Methods
+class Helpers {
+    static PI: number = 3.14;
+    static calcCircumference(diameter: number): number {
+        return this.PI * diameter;
+    }
+}
+console.log(2 * Helpers.PI);
+console.log(Helpers.calcCircumference(8));
