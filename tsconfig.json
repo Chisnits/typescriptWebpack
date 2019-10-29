@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "commonjs", //"module": "commonjs" common js way to compile ccode.
     "target": "es5",
     "sourceMap": true, //Generates corresponding .map file.
     "strictNullChecks": true, //n strict null checking mode, the null and undefined values are not in the domain of every type and are only assignable to themselves and any (the one exception being that undefined is also assignable to void).
