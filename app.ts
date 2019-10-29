@@ -326,14 +326,21 @@
 // }
 // console.log(Singleton.someMethod());
 
-/// <reference path="./namespace/circleMath.ts" />
-/// <reference path="./namespace/rectangleMath.ts" />
+// /// <reference path="./namespace/circleMath.ts" />
+// /// <reference path="./namespace/rectangleMath.ts" />
 
-//Setting up an alias for MyMath.Cicle
-import CircleMath = MyMath.Circle;
+// //Setting up an alias for MyMath.Cicle
+// import CircleMath = MyMath.Circle;
 
 
 
-console.log(MyMath.Circle.calculateRectangle(10,20));
-console.log(CircleMath.calculateRectangle(10,20));
-console.log(MyMath.calculateCircumfrence(3));
+// console.log(MyMath.Circle.calculateRectangle(10,20));
+// console.log(CircleMath.calculateRectangle(10,20));
+// console.log(MyMath.calculateCircumfrence(3));
+
+import { PI, calculateCircumfrence } from './math/circle';
+import calc from './math/rectangle';
+
+console.log(PI);
+console.log(calculateCircumfrence(3));
+console.log(calc(20,50));

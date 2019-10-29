@@ -286,7 +286,7 @@ var MyMath;
 //     }
 // }
 // console.log(Singleton.someMethod());
-/// <reference path="circleMath.ts" />
-/// <reference path="rectangleMath.ts" />
-console.log(MyMath.Circle.calculateRectangle(10, 20));
-console.log(MyMath.calculateCircumfrence(3));
+// /// <reference path="circleMath.ts" />
+// /// <reference path="rectangleMath.ts" />
+// console.log(MyMath.Circle.calculateRectangle(10, 20));
+// console.log(MyMath.calculateCircumfrence(3));
