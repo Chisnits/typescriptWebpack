@@ -338,9 +338,84 @@
 // console.log(CircleMath.calculateRectangle(10,20));
 // console.log(MyMath.calculateCircumfrence(3));
 
-import { PI, calculateCircumfrence } from './math/circle';
-import calc from './math/rectangle';
+// import { PI, calculateCircumfrence } from './math/circle';
+// import calc from './math/rectangle';
 
-console.log(PI);
-console.log(calculateCircumfrence(3));
-console.log(calc(20,50));
+// console.log(PI);
+// console.log(calculateCircumfrence(3));
+// console.log(calc(20,50));
+
+
+//age? is an optional argument.
+//object literals are checked much more strictly than if you assign them to a constant first.
+interface NamedPerson {
+    firstName: string;
+    age?: number;
+    [propName: string]: any;
+    greet?(lastName: string): void;
+    greetMe?(lastName: string): void;
+}
+
+function greet(person: NamedPerson) {
+    console.log("Hello, " + person.firstName);
+}
+
+function changeName(person: NamedPerson) {
+    person.firstName = "Anna";
+};
+
+const person = {
+    firstName: "Chase",
+    age: 27,
+    hobbies: ["Cooking", "Sports"],
+    greet(lastName: string) {
+        console.log("Hi, I am " + this.firstName + " " + lastName);
+    }
+};
+
+greet({firstName: "Chase", age: 27, hobbies:["Cooking", "Sports"], greet(lastName: string) {console.log("Hi, I am " + this.firstName + " " + lastName);}});
+changeName(person);
+greet(person);
+person.greet("anything");
+
+class Person implements NamedPerson {
+    firstName: string;
+    lastName: string;
+    greetMe(lastName: string) {
+        console.log("Hi, I am " + this.firstName + " " + lastName);
+    }
+}
+
+const myPerson = new Person();
+myPerson.firstName = "Charles";
+myPerson.lastName = "Derr";
+myPerson.greetMe(myPerson.lastName);
+
+//Function Types
+
+interface DoubleValueFunc {
+    (number1: number, number2: number) : number;
+}
+
+let myDoubleFunction: DoubleValueFunc;
+myDoubleFunction = function(val1: number, val2: number) {
+    return (val1 + val2) * 2;
+}
+
+console.log(myDoubleFunction(10, 20));
+
+//Interface Inheritance
+
+interface AgedPerson extends NamedPerson {
+    age: number;
+}
+
+const oldPerson: AgedPerson = {
+    age: 27,
+    firstName: "Chase",
+    greet(lastName: string) {
+        console.log("Hello");
+    }
+};
+
+console.log(oldPerson);
