@@ -348,74 +348,122 @@
 
 //age? is an optional argument.
 //object literals are checked much more strictly than if you assign them to a constant first.
-interface NamedPerson {
-    firstName: string;
-    age?: number;
-    [propName: string]: any;
-    greet?(lastName: string): void;
-    greetMe?(lastName: string): void;
+// interface NamedPerson {
+//     firstName: string;
+//     age?: number;
+//     [propName: string]: any;
+//     greet?(lastName: string): void;
+//     greetMe?(lastName: string): void;
+// }
+
+// function greet(person: NamedPerson) {
+//     console.log("Hello, " + person.firstName);
+// }
+
+// function changeName(person: NamedPerson) {
+//     person.firstName = "Anna";
+// };
+
+// const person = {
+//     firstName: "Chase",
+//     age: 27,
+//     hobbies: ["Cooking", "Sports"],
+//     greet(lastName: string) {
+//         console.log("Hi, I am " + this.firstName + " " + lastName);
+//     }
+// };
+
+// greet({firstName: "Chase", age: 27, hobbies:["Cooking", "Sports"], greet(lastName: string) {console.log("Hi, I am " + this.firstName + " " + lastName);}});
+// changeName(person);
+// greet(person);
+// person.greet("anything");
+
+// class Person implements NamedPerson {
+//     firstName: string;
+//     lastName: string;
+//     greetMe(lastName: string) {
+//         console.log("Hi, I am " + this.firstName + " " + lastName);
+//     }
+// }
+
+// const myPerson = new Person();
+// myPerson.firstName = "Charles";
+// myPerson.lastName = "Derr";
+// myPerson.greetMe(myPerson.lastName);
+
+// //Function Types
+
+// interface DoubleValueFunc {
+//     (number1: number, number2: number) : number;
+// }
+
+// let myDoubleFunction: DoubleValueFunc;
+// myDoubleFunction = function(val1: number, val2: number) {
+//     return (val1 + val2) * 2;
+// }
+
+// console.log(myDoubleFunction(10, 20));
+
+// //Interface Inheritance
+
+// interface AgedPerson extends NamedPerson {
+//     age: number;
+// }
+
+// const oldPerson: AgedPerson = {
+//     age: 27,
+//     firstName: "Chase",
+//     greet(lastName: string) {
+//         console.log("Hello");
+//     }
+// };
+
+// console.log(oldPerson);
+
+//Simple Generic
+function echo(data: any) {
+    return data;
 }
 
-function greet(person: NamedPerson) {
-    console.log("Hello, " + person.firstName);
+console.log(echo("Chase").length);
+console.log(echo(25).length); // returns undefined
+console.log(echo({name: "Chase", age: 27}).length); // returns undefined
+
+//Better Generic
+function betterEcho<T>(data: T) {
+    return data;
+}
+console.log(betterEcho("Chase").length);
+console.log(betterEcho<number>(25)); 
+console.log(betterEcho({name: "Chase", age: 25}));
+
+//Built-in Generics
+const testResults: Array<number> = [1.94, 2.33];
+testResults.push(-2.99);
+console.log(testResults);
+
+//Arrays
+function printAll<T>(args: T[]) {
+    args.forEach((element) => console.log(element));
+}
+printAll<String>(["Apple", "Banana"])
+
+//Generic Types
+const echo2: <T>(data: T) => T = betterEcho;
+
+console.log(echo2<String>("Something"));
+
+//Generic Class //Constraint extends the Generic
+//You can create a generic class that you have extend to control which values can be passed.
+class SimpleMath<T extends number | string, U extends number | string> {
+    baseValue: T;
+    multiplyValue: U;
+    calculate(): number {
+        return +this.baseValue * +this.multiplyValue;
+    }x
 }
 
-function changeName(person: NamedPerson) {
-    person.firstName = "Anna";
-};
-
-const person = {
-    firstName: "Chase",
-    age: 27,
-    hobbies: ["Cooking", "Sports"],
-    greet(lastName: string) {
-        console.log("Hi, I am " + this.firstName + " " + lastName);
-    }
-};
-
-greet({firstName: "Chase", age: 27, hobbies:["Cooking", "Sports"], greet(lastName: string) {console.log("Hi, I am " + this.firstName + " " + lastName);}});
-changeName(person);
-greet(person);
-person.greet("anything");
-
-class Person implements NamedPerson {
-    firstName: string;
-    lastName: string;
-    greetMe(lastName: string) {
-        console.log("Hi, I am " + this.firstName + " " + lastName);
-    }
-}
-
-const myPerson = new Person();
-myPerson.firstName = "Charles";
-myPerson.lastName = "Derr";
-myPerson.greetMe(myPerson.lastName);
-
-//Function Types
-
-interface DoubleValueFunc {
-    (number1: number, number2: number) : number;
-}
-
-let myDoubleFunction: DoubleValueFunc;
-myDoubleFunction = function(val1: number, val2: number) {
-    return (val1 + val2) * 2;
-}
-
-console.log(myDoubleFunction(10, 20));
-
-//Interface Inheritance
-
-interface AgedPerson extends NamedPerson {
-    age: number;
-}
-
-const oldPerson: AgedPerson = {
-    age: 27,
-    firstName: "Chase",
-    greet(lastName: string) {
-        console.log("Hello");
-    }
-};
-
-console.log(oldPerson);
+const simpleMath = new SimpleMath<string, number>();
+simpleMath.baseValue = "10";
+simpleMath.multiplyValue = 20;
+console.log(simpleMath.calculate());
