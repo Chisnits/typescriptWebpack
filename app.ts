@@ -421,49 +421,157 @@
 // console.log(oldPerson);
 
 //Simple Generic
-function echo(data: any) {
-    return data;
-}
+// function echo(data: any) {
+//     return data;
+// }
 
-console.log(echo("Chase").length);
-console.log(echo(25).length); // returns undefined
-console.log(echo({name: "Chase", age: 27}).length); // returns undefined
+// console.log(echo("Chase").length);
+// console.log(echo(25).length); // returns undefined
+// console.log(echo({name: "Chase", age: 27}).length); // returns undefined
 
 //Better Generic
-function betterEcho<T>(data: T) {
-    return data;
-}
-console.log(betterEcho("Chase").length);
-console.log(betterEcho<number>(25)); 
-console.log(betterEcho({name: "Chase", age: 25}));
+// function betterEcho<T>(data: T) {
+//     return data;
+// }
+// console.log(betterEcho("Chase").length);
+// console.log(betterEcho<number>(25));
+// console.log(betterEcho({name: "Chase", age: 25}));
 
 //Built-in Generics
-const testResults: Array<number> = [1.94, 2.33];
-testResults.push(-2.99);
-console.log(testResults);
+// const testResults: Array<number> = [1.94, 2.33];
+// testResults.push(-2.99);
+// console.log(testResults);
 
 //Arrays
-function printAll<T>(args: T[]) {
-    args.forEach((element) => console.log(element));
-}
-printAll<String>(["Apple", "Banana"])
+// function printAll<T>(args: T[]) {
+//     args.forEach((element) => console.log(element));
+// }
+// printAll<String>(["Apple", "Banana"])
 
 //Generic Types
-const echo2: <T>(data: T) => T = betterEcho;
+// const echo2: <T>(data: T) => T = betterEcho;
 
-console.log(echo2<String>("Something"));
+// console.log(echo2<String>("Something"));
 
 //Generic Class //Constraint extends the Generic
 //You can create a generic class that you have extend to control which values can be passed.
-class SimpleMath<T extends number | string, U extends number | string> {
-    baseValue: T;
-    multiplyValue: U;
-    calculate(): number {
-        return +this.baseValue * +this.multiplyValue;
-    }x
-}
+// class SimpleMath<T extends number | string, U extends number | string> {
+//     baseValue: T;
+//     multiplyValue: U;
+//     calculate(): number {
+//         return +this.baseValue * +this.multiplyValue;
+//     }
+// }
 
-const simpleMath = new SimpleMath<string, number>();
-simpleMath.baseValue = "10";
-simpleMath.multiplyValue = 20;
-console.log(simpleMath.calculate());
+// const simpleMath = new SimpleMath<string, number>();
+// simpleMath.baseValue = "10";
+// simpleMath.multiplyValue = 20;
+// console.log(simpleMath.calculate());
+
+//Decorator
+// function logged(construtorFn: Function) {
+//     console.log(construtorFn);
+// }
+
+// @logged
+// class Person {
+//     constructor() {
+//         console.log("Hi");
+//     }
+// }
+
+//Factory
+// function logging(value: boolean): any  {
+//     return value ? logged : null;
+// }
+
+// @logging(true)
+// class Car {
+
+// }
+
+//Advanced
+// function printable(constructorFn: Function) {
+//     constructorFn.prototype.print = function() {
+//         console.log(this);
+//     }
+// }
+
+// @logging(false)
+// @printable
+// class Plant {
+//     name = "Green Plant";
+// }
+// const plant = new Plant();
+// (<any>plant).print();
+
+//Method Decorator
+//Property Decorator
+// function editable(value: boolean) {
+//     return function(target: any, propName: string, descriptor: PropertyDescriptor) {
+//         descriptor.writable = value;
+//     }
+// }
+
+// function overwritable(value: boolean) {
+//     return function(target: any, propName: string): any {
+//         const newDescriptor: PropertyDescriptor = {
+//             writable: value
+//         };
+//         return newDescriptor;
+//     }
+// }
+
+// class Project {
+//     @overwritable(false)
+//     projectName: string;
+//     constructor(name: string) {
+//         this.projectName = name;
+//     }
+
+//     @editable(false)
+//     calcBudget() {
+//         console.log(1000);
+//     }
+// }
+
+// const project = new Project("Super Project");
+// project.calcBudget();
+// project.calcBudget = function() {
+//     console.log(2000);
+// }
+// project.calcBudget();
+
+//Parameter Decorator
+// function printInfo(target: any, methodName: string, paramIndex: number) {
+//     console.log("Target: ", target);
+//     console.log("Method Name: ", methodName);
+//     console.log("ParamIndex: ", paramIndex);
+// }
+
+// class Course {
+//     name: string;
+
+//     constructor(name: string) {
+//         this.name = name;
+//     }
+//         printStudentNumbers(mode: String, @printInfo printAll: boolean) {
+//             if (printAll) {
+//                 console.log(10000);
+//             } else {
+//                 console.log(2000);
+//             }
+//         }
+// }
+
+// const course = new Course("super course");
+// course.printStudentNumbers("anything", true);
+// course.printStudentNumbers("anything", false);
+
+//JQUERY
+// declare var $: any;
+
+
+// $("button").click(function() {
+//     alert('button was clicked');
+// })

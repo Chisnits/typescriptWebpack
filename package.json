@@ -8,6 +8,7 @@
     "typescript": "^3.2.2"
   },
   "devDependencies": {
+    "@types/jquery": "^3.3.31",
     "webpack": "^4.28.1",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14"
